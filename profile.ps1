@@ -48,16 +48,16 @@ Write-VcsStatus
 
 }#end prompt
 
-##########################
-# 02. Set-Global Output variable
-##########################
+
+# Set-Global Output variable
+
 Write-Host 'Setting global catch variable $__' -ForegroundColor White -BackgroundColor DarkGreen
 $PSDefaultParameterValues['Out-Default:OutVariable'] = '__'
 # Can be retrived by calling $__
 
-##########################
-# 03. Set Useful aliases
-##########################
+
+#  Set Useful aliases
+
 Write-Host "Setting time saver functions..." -ForegroundColor White -BackgroundColor DarkGreen
 
 # Useful shortcuts for traversing directories
@@ -83,7 +83,7 @@ function Env:   { Set-Location Env: }
 # Get-List
 function Get-List {
 
-		Write-Host "Paste your list below with each item on it's own line"
+	Write-Host "Paste your list below with each item on it's own line"
         $data = @(While($l=(Read-Host).Trim()){$l}) 
         $global:list = $data -split '\r\n' | % { $_.trim() | Where-object {$_ -ne $null} }
         $count = $global:list.count 
